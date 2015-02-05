@@ -13,7 +13,7 @@ Intended to run inside a *tmux* (or other *screen*), for example.
     git clone https://github.com/MickaelBergem/unfollower.git && cd unfollower
     virtualenv env
     source env/bin/activate
-    pip install -r -U requirements.txt
+    pip install -r requirements.txt
 
 You will then have to get consumer key and access tokens to be able to communicate with the Twitter API.
 Procedure described [here](https://github.com/bear/python-twitter#api).

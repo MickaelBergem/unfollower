@@ -5,7 +5,7 @@ Find out who unfollowed you on Twitter
 """
 
 import sqlalchemy
-import datetime
+from datetime import datetime
 import twitter
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models import Base, Follower
@@ -49,7 +49,7 @@ class Unfollower(object):
                         screen_name=follower.GetScreenName(),
                         twitter_id=follower.GetId(),
                         is_following=True,
-                        last_following=datetime.datetime.now(),
+                        last_following=datetime.now(),
                     )
                 )
 
@@ -57,7 +57,8 @@ class Unfollower(object):
         for old_follower in previous_followers:
             if old_follower.twitter_id not in current_followers_ids:
                 # Unfollower !
-                print "Found an unfollower : %s [%s] (#%d)" % (old_follower.name, old_follower.screen_name, old_follower.twitter_id)
+                print "%s > Found an unfollower : %s [%s] (#%d)" % \
+                    (datetime.today().strftime('%d/%m %H:%M'), old_follower.name, old_follower.screen_name, old_follower.twitter_id)
                 old_follower.is_following = False
 
         # Close the session

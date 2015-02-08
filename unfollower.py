@@ -42,7 +42,8 @@ class Unfollower(object):
         for follower in current_followers:
             if follower.GetId() not in previous_followers_ids:
                 # New follower !
-                print "Found a new follower : %s [%s] (#%d)" % (follower.GetName(), follower.GetScreenName(), follower.GetId())
+                print "[%s] Found a new follower : %s [%s] (#%d)" \
+                    % (datetime.today().strftime('%d/%m %H:%M'), follower.GetName(), follower.GetScreenName(), follower.GetId())
                 self.session.add(
                     Follower(
                         name=follower.GetName(),
@@ -57,7 +58,7 @@ class Unfollower(object):
         for old_follower in previous_followers:
             if old_follower.twitter_id not in current_followers_ids:
                 # Unfollower !
-                print "%s > Found an unfollower : %s [%s] (#%d)" % \
+                print "[%s] Found an unfollower : %s [%s] (#%d)" % \
                     (datetime.today().strftime('%d/%m %H:%M'), old_follower.name, old_follower.screen_name, old_follower.twitter_id)
                 old_follower.is_following = False
 

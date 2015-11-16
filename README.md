@@ -15,7 +15,8 @@ Intended to run inside a *tmux* (or other *screen*), for example.
     source env/bin/activate
     pip install -r requirements.txt
 
-You will then have to get consumer key and access tokens to be able to communicate with the Twitter API.
+You will then have to **get consumer key and access tokens to be able to
+communicate with the Twitter API**.
 Procedure described [here](https://github.com/bear/python-twitter#api).
 
 ## Usage
@@ -27,3 +28,7 @@ You will always need to enter the virtualenv :
 Then :
 
     python unfollower.py
+
+All your followers will be loaded on the first run:
+
+![GIF animation](tty.gif)

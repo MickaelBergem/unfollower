@@ -35,20 +35,20 @@ class Unfollower(object):
         previous_followers_ids = [follower.twitter_id for follower in previous_followers]
 
         current_followers = self.api.GetFollowers()
-        current_followers_ids = [follower.GetId() for follower in current_followers]
+        current_followers_ids = [follower.id for follower in current_followers]
         #print "Found %d followers" % len(current_followers)
 
         # Add the new followers
         for follower in current_followers:
-            if follower.GetId() not in previous_followers_ids:
+            if follower.id not in previous_followers_ids:
                 # New follower !
                 print "[%s] Found a new follower : %s [%s] (#%d)" \
-                    % (datetime.today().strftime('%d/%m %H:%M'), follower.GetName(), follower.GetScreenName(), follower.GetId())
+                    % (datetime.today().strftime('%d/%m %H:%M'), follower.name, follower.screen_name, follower.id)
                 self.session.add(
                     Follower(
-                        name=follower.GetName(),
-                        screen_name=follower.GetScreenName(),
-                        twitter_id=follower.GetId(),
+                        name=follower.name,
+                        screen_name=follower.screen_name,
+                        twitter_id=follower.id,
                         is_following=True,
                         last_following=datetime.now(),
                     )
